@@ -2,16 +2,23 @@ import React from 'react'
 import {
     Image,
     Icon,
+    List,
     Tab,
-    Menu,
-    Container,
     Grid,
     Item,
-    MenuItemProps,
     Header,
-    Responsive
+    Progress,
+    Popup
 } from 'semantic-ui-react'
-import { experiences, educations } from '../data'
+import Head from 'next/head'
+import {
+    experiences,
+    educations,
+    profile,
+    info,
+    projects,
+    skills
+} from '../data'
 
 const panes = [
     {
@@ -19,8 +26,8 @@ const panes = [
         render: () => (
             <Tab.Pane attached={false}>
                 <Item.Group>
-                    {experiences.map(e => (
-                        <Item>
+                    {experiences.map((e, i) => (
+                        <Item key={i}>
                             <Item.Content>
                                 <Item.Header>{e.company}</Item.Header>
                                 <Item.Meta>
@@ -31,17 +38,44 @@ const panes = [
                                     {e.description}
                                 </Item.Description>
                                 <Item.Extra>
-                                    {e.projects.map(p => (
-                                        <ul>
-                                            <li>{p.description}</li>
-                                            <ul>
-                                                {p.responsibilities.map(r => (
-                                                    <li>{r}</li>
-                                                ))}
-                                            </ul>
-                                        </ul>
-                                    ))}
+                                    <ul>
+                                        {e.projects.map((p, i) => (
+                                            <li key={i}>
+                                                {p.description}
+                                                <ul>
+                                                    {p.responsibilities.map(
+                                                        (r, j) => (
+                                                            <li key={j}>{r}</li>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </Item.Extra>
+                            </Item.Content>
+                        </Item>
+                    ))}
+                </Item.Group>
+            </Tab.Pane>
+        )
+    },
+    {
+        menuItem: 'Projects',
+        render: () => (
+            <Tab.Pane attached={false}>
+                <Item.Group>
+                    {projects.map((e, i) => (
+                        <Item key={i}>
+                            <Item.Content>
+                                <Item.Header as="a" href={e.link}>
+                                    {e.name}
+                                </Item.Header>
+                                <Item.Meta>{e.languages.join(', ')}</Item.Meta>
+                                <Item.Description>
+                                    {e.description}
+                                </Item.Description>
+                                <Item.Extra />
                             </Item.Content>
                         </Item>
                     ))}
@@ -54,8 +88,8 @@ const panes = [
         render: () => (
             <Tab.Pane attached={false}>
                 <Item.Group>
-                    {educations.map(e => (
-                        <Item>
+                    {educations.map((e, i) => (
+                        <Item key={i}>
                             <Item.Content>
                                 <Item.Header as="a" href={e.instituteLink}>
                                     {e.institute}
@@ -66,11 +100,12 @@ const panes = [
                                 </Item.Meta>
                                 <Item.Description>
                                     <ul>
-                                        {e.achievements.map(a => (
+                                        {e.achievements.map((a, i) => (
                                             <li
                                                 dangerouslySetInnerHTML={{
                                                     __html: a
                                                 }}
+                                                key={i}
                                             />
                                         ))}
                                     </ul>
@@ -85,76 +120,111 @@ const panes = [
     }
 ]
 
-export default class extends React.Component {
-    public state = { activeItem: 'profile' }
+const skillsTemplate = ([percent, skills]: [string, Skill[]]) => (
+    <div>
+        <div>
+            {skills.map(s => {
+                if (s.icon)
+                    return (
+                        <Popup
+                            trigger={
+                                <a href={s.link} target="_blank">
+                                    <Icon
+                                        aria-label={s.skill}
+                                        name={s.icon}
+                                        color={s.color}
+                                        size="large"
+                                        link
+                                    />
+                                </a>
+                            }
+                            content={s.skill}
+                        />
+                    )
+                return (
+                    <Popup
+                        trigger={
+                            <Image
+                                src={s.iconSrc}
+                                href={s.link}
+                                target="_blank"
+                                size="mini"
+                                style={{ padding: '4px' }}
+                            />
+                        }
+                        content={s.skill}
+                    />
+                )
+            })}
+        </div>
+        <Progress percent={percent} size="tiny" indicating />
+    </div>
+)
 
-    private handleItemClick = (_: React.MouseEvent, { name }: MenuItemProps) =>
-        this.setState({ activeItem: name })
+export default class extends React.Component {
+    private groupSkill(skills: Skill[]): [string, Skill[]][] {
+        const byPercent: SkillsByPercent = skills.reduce(
+            (res: SkillsByPercent, s: Skill) => {
+                if (!res[s.percent]) {
+                    res[s.percent] = []
+                }
+                res[s.percent].push(s)
+                return res
+            },
+            {}
+        )
+
+        return Object.entries(byPercent).sort(
+            (a: [string, Skill[]], b: [string, Skill[]]) =>
+                Number(b[0]) - Number(a[0])
+        )
+    }
 
     public render() {
-        const { activeItem } = this.state
         return (
-            <div>
-                <Menu>
-                    <Menu.Item
-                        name="profile"
-                        active={activeItem === 'profile'}
-                        onClick={this.handleItemClick}
+            <Grid celled>
+                <Head>
+                    <title>Profile | Wildan Maulana Syahidillah</title>
+                </Head>
+                <Grid.Row>
+                    <Grid.Column mobile={5} computer={5}>
+                        <Image src={profile.picture} />
+                    </Grid.Column>
+                    <Grid.Column
+                        mobile={11}
+                        computer={11}
+                        verticalAlign="bottom"
                     >
-                        Profile
-                    </Menu.Item>
-
-                    <Menu.Item
-                        name="blog"
-                        active={activeItem === 'blog'}
-                        onClick={this.handleItemClick}
-                    >
-                        Blog
-                    </Menu.Item>
-                </Menu>
-
-                <Container text>
-                    <Grid celled>
-                        <Grid.Row>
-                            <Grid.Column mobile={5} computer={5}>
-                                <Image src="/static/wildan_ganteng.jpg" />
-                            </Grid.Column>
-                            <Grid.Column mobile={11} computer={11}>
-                                <Header as="h1">
-                                    Wildan Maulana Syahidillah
-                                </Header>
-                                <Header.Subheader>
-                                    Software Developer
-                                </Header.Subheader>
-                                <div style={{ fontSize: '14px' }}>
-                                    Full-stack developer who is motivated by
-                                    ideas and knowledge.
-                                </div>
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <Grid.Column mobile={16} computer={5}>
-                                <Header as="h3">Basic Info</Header>
-                                <div>
-                                    <Icon name="globe" />
-                                    <span>Malang, Indonesia</span>
-                                </div>
-                                <div style={{ marginTop: '8px' }}>
-                                    <Icon name="birthday cake" />
-                                    <span>23 Years Old</span>
-                                </div>
-                            </Grid.Column>
-                            <Grid.Column mobile={16} computer={11}>
-                                <Tab
-                                    menu={{ secondary: true, pointing: true }}
-                                    panes={panes}
-                                    style={{ marginTop: '16px' }}
-                                />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                </Container>
-            </div>
+                        <Header as="h1">{profile.name}</Header>
+                        <Header.Subheader>{profile.position}</Header.Subheader>
+                        <div style={{ fontSize: '14px' }}>
+                            {profile.description}
+                        </div>
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column mobile={16} computer={5}>
+                        <Header as="h3">Basic Info</Header>
+                        <List>
+                            {info.map(i => (
+                                <List.Item key={i.id}>
+                                    <List.Icon name={i.icon} />
+                                    <List.Content>{i.text}</List.Content>
+                                </List.Item>
+                            ))}
+                        </List>
+                        <Header as="h3">Skills</Header>
+                        {this.groupSkill(skills).map(skillsTemplate)}
+                    </Grid.Column>
+                    <Grid.Column mobile={16} computer={11}>
+                        <Tab
+                            menu={{ secondary: true, pointing: true }}
+                            panes={panes}
+                            style={{ marginTop: '16px' }}
+                        />
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
         )
     }
 }

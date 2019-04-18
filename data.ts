@@ -112,3 +112,157 @@ export const educations: Education[] = [
         achievements: []
     }
 ]
+
+export const projects: Project[] = [
+    {
+        name: 'Dolan',
+        description:
+            'A sports social media platform allowing users find teammates to play sports.',
+        languages: ['Go', 'Vue', 'Nuxt', 'Dgraph'],
+        link: 'https://dolan.in'
+    },
+    {
+        name: 'Dgman',
+        description:
+            'Dgman is a schema manager for Dgraph using the Go Dgraph client (dgo), which manages Dgraph schema and indexes from Go tags in struct definitions. It also provides query, mutate, and delete helpers for easier data operations.',
+        languages: ['Go', 'Dgraph'],
+        link: 'https://github.com/dolan-in/dgman'
+    },
+    {
+        name: 'MQTT Android Tutorial',
+        description: 'A tutorial for using the MQTT Android service.',
+        languages: ['Java', 'Android'],
+        link: 'https://github.com/wildan2711/mqtt-android-tutorial'
+    }
+]
+
+export const profile: Profile = {
+    name: 'Wildan Maulana Syahidillah',
+    picture: '/static/wildan_ganteng.jpg',
+    position: 'Software Developer',
+    description:
+        'Full-stack developer who is motivated by ideas and knowledge.',
+    email: 'wildan2711@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/wildan-syahidillah-a83990128/',
+    facebook: 'https://www.facebook.com/wildan2711',
+    instagram: 'https://www.instagram.com/wsyahidillah/'
+}
+
+export const info: Info[] = [
+    {
+        id: 'location',
+        icon: 'globe',
+        text: 'Malang, Indonesia'
+    },
+    {
+        id: 'age',
+        icon: 'birthday cake',
+        text: '23 Years Old'
+    }
+]
+
+export const skills: Skill[] = [
+    {
+        skill: 'VueJS',
+        icon: 'vuejs',
+        percent: 80,
+        link: 'https://vuejs.org',
+        color: 'green'
+    },
+    {
+        skill: 'Golang',
+        iconSrc: '/static/Go-Logo_Aqua.svg',
+        percent: 80,
+        link: 'https://golang.org/'
+    },
+    {
+        skill: 'Typescript',
+        iconSrc: '/static/typescript.png',
+        percent: 75,
+        link: 'https://www.typescriptlang.org/',
+        color: 'blue'
+    },
+    {
+        skill: 'Angular',
+        icon: 'angular',
+        percent: 65,
+        link: 'https://angular.io/',
+        color: 'red'
+    },
+    {
+        skill: 'Python',
+        icon: 'python',
+        percent: 65,
+        link: 'https://www.python.org/',
+        color: 'blue'
+    },
+    {
+        skill: 'Docker',
+        icon: 'docker',
+        percent: 75,
+        link: 'https://docker.com/',
+        color: 'blue'
+    },
+    {
+        skill: 'Ionic',
+        iconSrc: '/static/ionic.png',
+        percent: 50,
+        link: 'https://ionicframework.com/'
+    },
+    {
+        skill: 'React',
+        icon: 'react',
+        percent: 50,
+        link: 'https://reactjs.org/',
+        color: 'blue'
+    },
+    {
+        skill: 'Amazon Web Services',
+        icon: 'aws',
+        percent: 60,
+        link: 'https://aws.amazon.com',
+        color: 'orange'
+    },
+    {
+        skill: 'Azure',
+        iconSrc: '/static/azure.png',
+        percent: 50,
+        link: 'https://azure.microsoft.com'
+    },
+    {
+        skill: 'Google Cloud Platform',
+        iconSrc: '/static/gcp.png',
+        percent: 50,
+        link: 'https://cloud.google.com/'
+    },
+    {
+        skill: 'Rust',
+        iconSrc: '/static/rust.svg',
+        percent: 40,
+        link: 'https://www.rust-lang.org/'
+    },
+    {
+        skill: 'Postgres',
+        iconSrc: '/static/postgres.png',
+        percent: 80,
+        link: 'https://www.postgresql.org/'
+    },
+    {
+        skill: 'MongoDB',
+        iconSrc: '/static/mongodb.png',
+        percent: 60,
+        link: 'https://www.mongodb.com/'
+    },
+    {
+        skill: 'Dgraph',
+        iconSrc: '/static/dgraph.jpg',
+        percent: 75,
+        link: 'https://dgraph.io/'
+    },
+    {
+        skill: 'ASP.NET Core',
+        iconSrc: '/static/netcore.png',
+        percent: 40,
+        link: 'https://dotnet.microsoft.com/'
+    }
+]

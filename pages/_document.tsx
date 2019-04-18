@@ -16,7 +16,6 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>Wildan Maulana Syahidillah</title>
                     <meta
                         name="viewport"
                         content="width=device-width, initial-scale=1"
