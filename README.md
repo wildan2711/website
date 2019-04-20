@@ -1,2 +1,3 @@
-# Wildan's Resume
-My job resume using reactjs
+# Wildan's Personal Website
+
+My personal website using Next.js
