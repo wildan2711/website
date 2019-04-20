@@ -4,12 +4,12 @@ import Document, {
     Main,
     NextScript,
     NextDocumentContext
-} from 'next/document'
+} from 'next/document';
 
 export default class MyDocument extends Document {
     public static async getInitialProps(ctx: NextDocumentContext) {
-        const initialProps = await Document.getInitialProps(ctx)
-        return { ...initialProps }
+        const initialProps = await Document.getInitialProps(ctx);
+        return { ...initialProps };
     }
 
     public render() {
@@ -34,6 +34,6 @@ export default class MyDocument extends Document {
                     <NextScript />
                 </body>
             </Html>
-        )
+        );
     }
 }

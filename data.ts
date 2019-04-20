@@ -65,7 +65,7 @@ export const experiences: Experience[] = [
             }
         ]
     }
-]
+];
 
 export const educations: Education[] = [
     {
@@ -111,7 +111,7 @@ export const educations: Education[] = [
         end: 2010,
         achievements: []
     }
-]
+];
 
 export const projects: Project[] = [
     {
@@ -134,7 +134,7 @@ export const projects: Project[] = [
         languages: ['Java', 'Android'],
         link: 'https://github.com/wildan2711/mqtt-android-tutorial'
     }
-]
+];
 
 export const profile: Profile = {
     name: 'Wildan Maulana Syahidillah',
@@ -146,7 +146,7 @@ export const profile: Profile = {
     linkedin: 'https://www.linkedin.com/in/wildan-syahidillah-a83990128/',
     facebook: 'https://www.facebook.com/wildan2711',
     instagram: 'https://www.instagram.com/wsyahidillah/'
-}
+};
 
 export const info: Info[] = [
     {
@@ -159,7 +159,7 @@ export const info: Info[] = [
         icon: 'birthday cake',
         text: '23 Years Old'
     }
-]
+];
 
 export const skills: Skill[] = [
     {
@@ -265,4 +265,4 @@ export const skills: Skill[] = [
         percent: 40,
         link: 'https://dotnet.microsoft.com/'
     }
-]
+];

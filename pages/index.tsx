@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     Image,
     Icon,
@@ -9,8 +9,8 @@ import {
     Header,
     Progress,
     Popup
-} from 'semantic-ui-react'
-import Head from 'next/head'
+} from 'semantic-ui-react';
+import Head from 'next/head';
 import {
     experiences,
     educations,
@@ -18,7 +18,7 @@ import {
     info,
     projects,
     skills
-} from '../data'
+} from '../data';
 
 const panes = [
     {
@@ -118,7 +118,7 @@ const panes = [
             </Tab.Pane>
         )
     }
-]
+];
 
 const skillsTemplate = ([percent, skills]: [string, Skill[]]) => (
     <div>
@@ -140,7 +140,7 @@ const skillsTemplate = ([percent, skills]: [string, Skill[]]) => (
                             }
                             content={s.skill}
                         />
-                    )
+                    );
                 return (
                     <Popup
                         trigger={
@@ -154,30 +154,30 @@ const skillsTemplate = ([percent, skills]: [string, Skill[]]) => (
                         }
                         content={s.skill}
                     />
-                )
+                );
             })}
         </div>
         <Progress percent={percent} size="tiny" indicating />
     </div>
-)
+);
 
 export default class extends React.Component {
     private groupSkill(skills: Skill[]): [string, Skill[]][] {
         const byPercent: SkillsByPercent = skills.reduce(
             (res: SkillsByPercent, s: Skill) => {
                 if (!res[s.percent]) {
-                    res[s.percent] = []
+                    res[s.percent] = [];
                 }
-                res[s.percent].push(s)
-                return res
+                res[s.percent].push(s);
+                return res;
             },
             {}
-        )
+        );
 
         return Object.entries(byPercent).sort(
             (a: [string, Skill[]], b: [string, Skill[]]) =>
                 Number(b[0]) - Number(a[0])
-        )
+        );
     }
 
     public render() {
@@ -225,6 +225,6 @@ export default class extends React.Component {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-        )
+        );
     }
 }

@@ -1,7 +1,7 @@
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
-import React from 'react'
-import App, { Container, NextAppContext } from 'next/app'
+import React from 'react';
+import App, { Container, NextAppContext } from 'next/app';
 import {
     Menu,
     Container as SemanticContainer,
@@ -10,9 +10,9 @@ import {
     Segment,
     Icon,
     Button
-} from 'semantic-ui-react'
-import Link from 'next/link'
-import { profile } from '../data'
+} from 'semantic-ui-react';
+import Link from 'next/link';
+import { profile } from '../data';
 
 class MyApp extends App {
     public static async getInitialProps({
@@ -20,19 +20,19 @@ class MyApp extends App {
         ctx,
         router
     }: NextAppContext) {
-        let pageProps = { route: '' }
+        let pageProps = { route: '' };
 
         if (Component.getInitialProps) {
-            pageProps = await Component.getInitialProps(ctx)
+            pageProps = await Component.getInitialProps(ctx);
         }
 
-        pageProps.route = router.route
+        pageProps.route = router.route;
 
-        return { pageProps }
+        return { pageProps };
     }
 
     public render() {
-        const { Component, pageProps } = this.props
+        const { Component, pageProps } = this.props;
 
         return (
             <Container>
@@ -57,7 +57,7 @@ class MyApp extends App {
                         </Menu.Item>
                     </SemanticContainer>
                 </Menu>
-                <SemanticContainer text style={{ marginTop: '56px' }}>
+                <SemanticContainer text style={{ marginTop: '72px' }}>
                     <Component {...pageProps} />
                 </SemanticContainer>
                 <Segment
@@ -96,8 +96,8 @@ class MyApp extends App {
                     </SemanticContainer>
                 </Segment>
             </Container>
-        )
+        );
     }
 }
 
-export default MyApp
+export default MyApp;

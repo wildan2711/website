@@ -6,7 +6,6 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'react'],
   rules: {
-    semi: [2, 'never'],
     '@typescript-eslint/explicit-function-return-type': 'off'
   }
 }
