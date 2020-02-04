@@ -1,9 +1,36 @@
+import differenceInYears from 'date-fns/differenceInYears';
+
 export const experiences: Experience[] = [
+    {
+        company: 'Tokopedia',
+        position: 'Software Engineer',
+        start: 2019,
+        end: 'present',
+        description:
+            'Tokopedia is the number 1 online marketplace in Indonesia, owing to its mission in democratizing commerce through technology.',
+        projects: [
+            {
+                description:
+                    'Responsible in full-stack engineering the web application for a new product, which includes:',
+                responsibilities: [
+                    'Development of desktop front-end app using ReactJS,',
+                    'Development of back-end web-services using Golang,',
+                    'Participate and submit back-end code reviews,',
+                    'Collaboration with other teams for integration with existing modules'
+                ]
+            },
+            {
+                description:
+                    'Development of internal frontend framework using VueJS.',
+                responsibilities: []
+            }
+        ]
+    },
     {
         company: 'PT WJA',
         position: 'Software Developer',
         start: 2018,
-        end: 'present',
+        end: 2019,
         description:
             'Responsible for full-stack development of web applications and basic DevOps and System Administration tasks.',
         projects: [
@@ -26,20 +53,19 @@ export const experiences: Experience[] = [
     {
         company: 'Freelance',
         position: 'Software Developer',
-        start: 2018,
-        end: null,
-        description:
-            'Developed culinary race web application using VueJS, Golang, and PostgreSQL.',
-        projects: []
-    },
-    {
-        company: 'Freelance',
-        position: 'Software Developer',
         start: 2017,
-        end: null,
-        description:
-            'Developed CBIC (Corporate Banking Information Center) hybrid mobile application using Ionic 2.',
-        projects: []
+        end: 2018,
+        description: '',
+        projects: [
+            {
+                description:
+                    'Developed CBIC (Corporate Banking Information Center) hybrid mobile application using Ionic 2.'
+            },
+            {
+                description:
+                    'Developed culinary race web application using VueJS, Golang, and PostgreSQL.'
+            }
+        ]
     },
     {
         company: 'PT Magicsoft Asia Systems',
@@ -138,7 +164,7 @@ export const projects: Project[] = [
 
 export const profile: Profile = {
     name: 'Wildan Maulana Syahidillah',
-    picture: '/static/wildan_ganteng.jpg',
+    picture: '/wildan_ganteng.jpg',
     position: 'Software Developer',
     description:
         'Full-stack developer who is motivated by ideas and knowledge.',
@@ -157,7 +183,10 @@ export const info: Info[] = [
     {
         id: 'age',
         icon: 'birthday cake',
-        text: '23 Years Old'
+        text: `${differenceInYears(
+            new Date(),
+            new Date(1995, 11, 27)
+        )} Years Old`
     }
 ];
 
@@ -171,13 +200,13 @@ export const skills: Skill[] = [
     },
     {
         skill: 'Golang',
-        iconSrc: '/static/Go-Logo_Aqua.svg',
+        iconSrc: '/Go-Logo_Aqua.svg',
         percent: 80,
         link: 'https://golang.org/'
     },
     {
         skill: 'Typescript',
-        iconSrc: '/static/typescript.png',
+        iconSrc: '/typescript.png',
         percent: 75,
         link: 'https://www.typescriptlang.org/',
         color: 'blue'
@@ -205,14 +234,14 @@ export const skills: Skill[] = [
     },
     {
         skill: 'Ionic',
-        iconSrc: '/static/ionic.png',
+        iconSrc: '/ionic.png',
         percent: 50,
         link: 'https://ionicframework.com/'
     },
     {
         skill: 'React',
         icon: 'react',
-        percent: 50,
+        percent: 80,
         link: 'https://reactjs.org/',
         color: 'blue'
     },
@@ -225,43 +254,43 @@ export const skills: Skill[] = [
     },
     {
         skill: 'Azure',
-        iconSrc: '/static/azure.png',
+        iconSrc: '/azure.png',
         percent: 50,
         link: 'https://azure.microsoft.com'
     },
     {
         skill: 'Google Cloud Platform',
-        iconSrc: '/static/gcp.png',
+        iconSrc: '/gcp.png',
         percent: 50,
         link: 'https://cloud.google.com/'
     },
     {
         skill: 'Rust',
-        iconSrc: '/static/rust.svg',
+        iconSrc: '/rust.svg',
         percent: 40,
         link: 'https://www.rust-lang.org/'
     },
     {
         skill: 'Postgres',
-        iconSrc: '/static/postgres.png',
+        iconSrc: '/postgres.png',
         percent: 80,
         link: 'https://www.postgresql.org/'
     },
     {
         skill: 'MongoDB',
-        iconSrc: '/static/mongodb.png',
+        iconSrc: '/mongodb.png',
         percent: 60,
         link: 'https://www.mongodb.com/'
     },
     {
         skill: 'Dgraph',
-        iconSrc: '/static/dgraph.jpg',
+        iconSrc: '/dgraph.jpg',
         percent: 75,
         link: 'https://dgraph.io/'
     },
     {
         skill: 'ASP.NET Core',
-        iconSrc: '/static/netcore.png',
+        iconSrc: '/netcore.png',
         percent: 40,
         link: 'https://dotnet.microsoft.com/'
     }

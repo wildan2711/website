@@ -1,21 +1,31 @@
-const withCSS = require('@zeit/next-css')
-const withTypescript = require('@zeit/next-typescript')
-const withPlugins = require('next-compose-plugins')
+require('dotenv').config();
 
-module.exports = withTypescript(
-    withCSS({
-        webpack(config, options) {
-            config.module.rules.push({
-                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+module.exports = {
+    webpack(config) {
+        config.module.rules.push(
+            {
+                test: /\.(png|svg)$/,
                 use: {
                     loader: 'url-loader',
                     options: {
-                        limit: 100000
+                        limit: 8192,
+                        publicPath: '/_next/static/',
+                        outputPath: 'static/',
+                        name: '[name].[ext]'
                     }
                 }
-            })
-
-            return config
-        }
-    })
-)
+            },
+            {
+                test: /\.md$/,
+                use: {
+                    loader: 'raw-loader'
+                }
+            }
+        );
+        return config;
+    },
+    env: {
+        SITE_URL: process.env.SITE_URL,
+        DISQUS_SHORTNAME: process.env.DISQUS_SHORTNAME
+    }
+};

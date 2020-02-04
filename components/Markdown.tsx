@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Header } from 'semantic-ui-react';
 import CodeBlock from './CodeBlock';
@@ -13,7 +14,7 @@ function imageRenderer({ src, ...props }: { src: string; props: any }) {
     const match = imageSizeRegex.exec(src);
 
     if (!match) {
-        return <img src={src} {...props} />;
+        return <img src={src} style={{ maxWidth: '100%' }} {...props} />;
     }
 
     const [width, height] = match[1]
@@ -53,7 +54,15 @@ function headerRenderer({
     );
 }
 
-export default ({ source, ...props }: { source?: string; props?: any }) => {
+const Markdown = ({
+    source,
+    className,
+    ...props
+}: {
+    source?: string;
+    className: string;
+    props?: any;
+}) => {
     const renderers: { [nodeType: string]: React.ElementType } = {};
 
     source = imagePreprocessor(source || '');
@@ -65,8 +74,10 @@ export default ({ source, ...props }: { source?: string; props?: any }) => {
         <ReactMarkdown
             source={source}
             renderers={renderers}
-            className="post"
+            className={className}
             {...props}
         />
     );
 };
+
+export default Markdown;
