@@ -35,6 +35,7 @@ interface Profile {
     description: string;
     email?: string;
     linkedin?: string;
+    github?: string;
     facebook?: string;
     instagram?: string;
 }
@@ -56,4 +57,11 @@ interface Skill {
 
 interface SkillsByPercent {
     [percent: number]: Skill[];
+}
+
+interface Post {
+    id: number;
+    title: string;
+    created: string;
+    text: string;
 }

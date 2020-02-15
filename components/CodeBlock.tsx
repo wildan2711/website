@@ -3,9 +3,11 @@ import { string } from 'prop-types';
 import hljs from 'highlight.js/lib/highlight';
 import java from 'highlight.js/lib/languages/java';
 import python from 'highlight.js/lib/languages/python';
+import go from 'highlight.js/lib/languages/go';
 
 hljs.registerLanguage('java', java);
 hljs.registerLanguage('python', python);
+hljs.registerLanguage('go', go);
 
 interface CodeBlockProps {
     value: string;
@@ -25,9 +27,11 @@ function CodeBlock(props: CodeBlockProps) {
         highlightCode();
     }, [props]);
 
+    const className = props.language ? `language-${props.language}` : undefined;
+
     return (
         <pre>
-            <code ref={codeEl} className={`language-${props.language}`}>
+            <code ref={codeEl} className={className}>
                 {props.value}
             </code>
         </pre>

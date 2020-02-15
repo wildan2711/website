@@ -71,11 +71,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                                     />
                                 </a>
                                 <a
-                                    href={profile.facebook}
+                                    href={profile.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Icon name="facebook" size="large" />
+                                    <Icon name="github" size="large" />
                                 </a>
                                 <a
                                     href={profile.instagram}

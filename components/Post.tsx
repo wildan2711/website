@@ -8,7 +8,6 @@ import Disqus from 'disqus-react';
 import { generateUrlSEO } from '../lib/url';
 
 interface PostProps {
-    postId: number;
     title: string;
     text: string;
     href?: string;
@@ -19,12 +18,12 @@ const Post = (props: PostProps) => {
     const disqusShortname = process.env.DISQUS_SHORTNAME || '';
     const postPath = generateUrlSEO(props.title);
     const disqusConfig = {
-        url: `${process.env.SITE_URL}/${props.postId}/${postPath}`,
-        identifier: props.postId.toString(),
+        url: `${process.env.SITE_URL}/${postPath}`,
+        identifier: postPath,
         title: props.title
     };
     return (
-        <div>
+        <>
             <Header as="h1" style={{ marginBottom: '0 !important' }}>
                 {props.title}
             </Header>
@@ -45,7 +44,7 @@ const Post = (props: PostProps) => {
                 </>
             ) : (
                 // display comments on post page
-                <>
+                <div className="comment-wrapper">
                     <Disqus.CommentCount
                         shortname={disqusShortname}
                         config={disqusConfig}
@@ -57,9 +56,26 @@ const Post = (props: PostProps) => {
                         shortname={disqusShortname}
                         config={disqusConfig}
                     />
-                </>
+                </div>
             )}
-        </div>
+
+            <style global jsx>
+                {`
+                    .post {
+                        margin-top: 16px;
+                        text-align: justify;
+                    }
+
+                    .post img {
+                        max-width: 100%;
+                    }
+
+                    .comment-wrapper {
+                        margin-top: 16px;
+                    }
+                `}
+            </style>
+        </>
     );
 };
 

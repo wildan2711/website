@@ -14,7 +14,7 @@ function imageRenderer({ src, ...props }: { src: string; props: any }) {
     const match = imageSizeRegex.exec(src);
 
     if (!match) {
-        return <img src={src} style={{ maxWidth: '100%' }} {...props} />;
+        return <img src={src} {...props} />;
     }
 
     const [width, height] = match[1]
@@ -48,7 +48,7 @@ function headerRenderer({
             .toLowerCase()
     );
     return (
-        <a name={anchor}>
+        <a href={`#${anchor}`} name={anchor}>
             <Header as={`h${level}`}>{children}</Header>
         </a>
     );

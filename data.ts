@@ -170,7 +170,7 @@ export const profile: Profile = {
         'Full-stack developer who is motivated by ideas and knowledge.',
     email: 'wildan2711@gmail.com',
     linkedin: 'https://www.linkedin.com/in/wildan-syahidillah-a83990128/',
-    facebook: 'https://www.facebook.com/wildan2711',
+    github: 'https://github.com/wildan2711',
     instagram: 'https://www.instagram.com/wsyahidillah/'
 };
 
