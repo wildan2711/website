@@ -17,7 +17,7 @@ type User struct {
 
 Dgman allows to map our struct into a Dgraph schema by using the `json` and `dgraph` tags. The `json` tag defines our predicate name, while the `dgraph` tag defines our index, value type, or other dgraph directives. There is also a Dgman specific directive here in use, the `unique` directive to be used in mutations, which we will get into later.
 
-Next, We would like to create the Dgraph type and schema when the app starts. Let's do this in our `main()` function, with establishing our Dgraph client connection.
+Next, we would like to create the Dgraph type and schema when the app starts. Let's do this in our `main()` function, with establishing our Dgraph client connection.
 
 ```go
 package main
@@ -101,13 +101,14 @@ type User struct {
 	DType    []string   `json:"dgraph.type,omitempty"`
 }
 
-type checkPassword struct {
-	Valid bool `json:"valid"`
+type CheckPassword struct {
+	UserID string `json:"uid"`
+	Valid  bool   `json:"valid"`
 }
 
 type UserStore interface {
 	Create(context.Context, *User) error
-	CheckPassword(context.Context, *Login) (bool, error)
+	CheckPassword(context.Context, *Login) (*CheckPassword, error)
 	Get(ctx context.Context, uid string) (*User, error)
 }
 ```
@@ -164,17 +165,21 @@ type Login struct {
 	Password string
 }
 
-type checkPassword struct {
-	Valid bool `json:"valid"`
+type CheckPassword struct {
+	UserID string `json:"uid"`
+	Valid  bool   `json:"valid"`
 }
 
-func (s *userStore) CheckPassword(ctx context.Context, login *Login) (bool, error) {
-	result := &checkPassword{}
+func (s *userStore) CheckPassword(ctx context.Context, login *Login) (*CheckPassword, error) {
+	result := &CheckPassword{}
 
 	tx := dgman.NewReadOnlyTxnContext(ctx, s.c)
 	err := tx.Get(&User{}).
 		Filter("eq(email, $1)", login.Email).
-		Query(`{ valid: checkpwd(password, $1) }`, login.Password).
+		Query(`{ 
+			uid
+			valid: checkpwd(password, $1) 
+		}`, login.Password).
 		Node(result)
 	if err != nil {
 		if err == dgman.ErrNodeNotFound {
@@ -182,7 +187,7 @@ func (s *userStore) CheckPassword(ctx context.Context, login *Login) (bool, erro
 		}
 	}
 
-	return result.Valid, nil
+	return result, nil
 }
 ```
 
@@ -190,7 +195,7 @@ Here, the `tx.Get(&User{})` method call will prepare a query for querying nodes 
 
 As mentioned above, we will return the result of the `checkpwd` Dgraph function and store it on the `valid` alias. The `Node` method will execute the query and determines that we want to return a single node result from the query, with an optional parameter to define the struct pointer destination of the query result (a JSON object). Here, we pass the `result` variable, an instance of a `checkPassword` struct, as the result destination.
 
-From there, we can return the `result.Valid` field which indicates whether the password was valid. Another case is whether we did not find a `User` node with the passed email, then the query method will return a `dgman.ErrNodeNotFound` error value.
+From there, we can return the `result` variable which contains the `UserID` and `Valid` field which indicates whether the password was valid. Another case is whether we did not find a `User` node with the passed email, then the query method will return a `dgman.ErrNodeNotFound` error value.
 
 ### Get User
 

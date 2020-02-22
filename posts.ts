@@ -18,7 +18,7 @@ Multipath routing is a routing method which finds multiple routes to a destinati
         id: 3,
         title:
             'Building a Simple REST API Authentication App using Dgraph with Dgman',
-        created: '2020-02-04T15:16:11.122Z',
+        created: '2020-02-15T15:16:11.122Z',
         text: `This is a tutorial for building a simple REST API authentication app using the Dgraph database and the [Dgman](https://github.com/dolan-in/dgman) library, showcasing the features and convenience provided by the Dgman library. Dgman allows working with the [Dgraph type system](https://docs.dgraph.io/query-language/#type-system) using the [Dgraph go client](https://github.com/dgraph-io/dgo) in a simple and convenient manner, providing automatic type, schema, and index syncing, node type injection, unique checking in mutations, and query helpers. The aim is to provide a library with ORM-like convenience found in SQL ecosystems for Dgraph clients.`
     }
 ];

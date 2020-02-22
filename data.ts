@@ -18,11 +18,6 @@ export const experiences: Experience[] = [
                     'Participate and submit back-end code reviews,',
                     'Collaboration with other teams for integration with existing modules'
                 ]
-            },
-            {
-                description:
-                    'Development of internal frontend framework using VueJS.',
-                responsibilities: []
             }
         ]
     },
