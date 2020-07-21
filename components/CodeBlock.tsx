@@ -10,41 +10,41 @@ hljs.registerLanguage('python', python);
 hljs.registerLanguage('go', go);
 
 interface CodeBlockProps {
-    value: string;
-    language?: string;
+  value: string;
+  language?: string;
 }
 
 function CodeBlock(props: CodeBlockProps) {
-    const codeEl = useRef<HTMLElement | null>(null);
+  const codeEl = useRef<HTMLElement>(null);
 
-    const highlightCode = () => {
-        if (codeEl?.current) {
-            hljs.highlightBlock(codeEl.current);
-        }
-    };
+  const highlightCode = () => {
+    if (codeEl?.current) {
+      hljs.highlightBlock(codeEl.current);
+    }
+  };
 
-    useEffect(() => {
-        highlightCode();
-    }, [props]);
+  useEffect(() => {
+    highlightCode();
+  }, [props]);
 
-    const className = props.language ? `language-${props.language}` : undefined;
+  const className = props.language ? `language-${props.language}` : undefined;
 
-    return (
-        <pre>
-            <code ref={codeEl} className={className}>
-                {props.value}
-            </code>
-        </pre>
-    );
+  return (
+    <pre>
+      <code ref={codeEl} className={className}>
+        {props.value}
+      </code>
+    </pre>
+  );
 }
 
 CodeBlock.defaultProps = {
-    language: ''
+  language: ''
 };
 
 CodeBlock.propTypes = {
-    value: string.isRequired,
-    language: string
+  value: string.isRequired,
+  language: string
 };
 
 export default CodeBlock;
