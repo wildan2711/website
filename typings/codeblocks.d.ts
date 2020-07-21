@@ -1,4 +1,4 @@
 interface CodeBlocksProps {
-    language?: string;
-    value: string;
+  language?: string;
+  value: string;
 }

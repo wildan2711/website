@@ -14,11 +14,13 @@ interface PostProps {
   created: string;
 }
 
+const disqusShortname = process.env.DISQUS_SHORTNAME || '';
+const siteUrl = process.env.SITE_URL || '';
+
 const Post = (props: PostProps) => {
-  const disqusShortname = process.env.DISQUS_SHORTNAME || '';
   const postPath = generateUrlSEO(props.title);
   const disqusConfig = {
-    url: `${process.env.SITE_URL}/${postPath}`,
+    url: `${siteUrl}/${postPath}`,
     identifier: postPath,
     title: props.title
   };
