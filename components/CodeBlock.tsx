@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { string } from 'prop-types';
-import hljs from 'highlight.js/lib/highlight';
+import hljs from 'highlight.js/lib/core';
 import java from 'highlight.js/lib/languages/java';
 import python from 'highlight.js/lib/languages/python';
 import go from 'highlight.js/lib/languages/go';

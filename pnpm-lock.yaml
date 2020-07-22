@@ -9,7 +9,7 @@ dependencies:
   date-fns: 2.15.0
   disqus-react: 1.0.9_react-dom@16.13.1+react@16.13.1
   dotenv: 8.2.0
-  highlight.js: 9.18.1
+  highlight.js: 10.1.1
   next: 9.4.4_ac1925d3b18bab26b8f85315f9db8478
   react: 16.13.1
   react-dom: 16.13.1_react@16.13.1
@@ -3505,10 +3505,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
-  /highlight.js/9.18.1:
+  /highlight.js/10.1.1:
     dev: false
     resolution:
-      integrity: sha512-OrVKYz70LHsnCgmbXctv/bfuvntIKDz177h0Co37DQ5jamGZLVmoCVMtjMtNZY3X9DrCcKfklHPNeA0uPZhSJg==
+      integrity: sha512-b4L09127uVa+9vkMgPpdUQP78ickGbHEQTWeBrQFTJZ4/n2aihWOGS0ZoUqAwjVmfjhq/C76HRzkqwZhK4sBbg==
   /hmac-drbg/1.0.1:
     dependencies:
       hash.js: 1.1.7
@@ -7013,7 +7013,7 @@ packages:
       integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 specifiers:
   '@babel/core': ^7.8.4
-  '@types/highlight.js': ^9.12.3
+  '@types/highlight.js': ^9.12.4
   '@types/next': ^9.0.0
   '@types/node': ^14.0.24
   '@types/react': ^16.9.19
@@ -7032,7 +7032,7 @@ specifiers:
   eslint-plugin-prettier: ^3.1.2
   eslint-plugin-react: ^7.18.3
   file-loader: ^5.0.2
-  highlight.js: ^9.18.1
+  highlight.js: ^10.1.1
   next: ^9.2.1
   prettier: ^1.19.1
   raw-loader: ^4.0.0

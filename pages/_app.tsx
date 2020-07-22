@@ -89,6 +89,14 @@ function MyApp({ Component, pageProps }: AppProps) {
           </Grid>
         </SemanticContainer>
       </Segment>
+
+      <style global jsx>
+        {`
+          html {
+            overflow: hidden;
+          }
+        `}
+      </style>
     </>
   );
 }

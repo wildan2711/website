@@ -33,14 +33,14 @@ const Post = (props: PostProps) => {
       <Markdown source={props.text} className="post" />
       {props.href ? (
         <>
-          <Grid>
-            <Grid.Column floated="right" width={4}>
+          <Grid textAlign="right" style={{ marginTop: 8 }}>
+            <Grid.Column floated="right" computer={4} mobile={8}>
               <Link href={props.href} passHref>
                 <Button>Read More...</Button>
               </Link>
             </Grid.Column>
           </Grid>
-          <Divider style={{ marginBottom: '32px' }} />
+          <Divider style={{ marginBottom: 32 }} />
         </>
       ) : (
         // display comments on post page
@@ -64,6 +64,7 @@ const Post = (props: PostProps) => {
           .post {
             margin-top: 16px;
             text-align: justify;
+            max-width: 100vw;
           }
 
           .post img {
