@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: {
-      postId: parseInt(id as string, 10),
+      postId: parseInt(id, 10),
       title: post.title,
       created: post.created,
       description: post.text,

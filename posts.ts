@@ -20,6 +20,23 @@ Multipath routing is a routing method which finds multiple routes to a destinati
       'Building a Simple REST API Authentication App using Dgraph with Dgman',
     created: '2020-02-15T15:16:11.122Z',
     text: `This is a tutorial for building a simple REST API authentication app using the Dgraph database and the [Dgman](https://github.com/dolan-in/dgman) library, showcasing the features and convenience provided by the Dgman library. Dgman allows working with the [Dgraph type system](https://docs.dgraph.io/query-language/#type-system) using the [Dgraph go client](https://github.com/dgraph-io/dgo) in a simple and convenient manner, providing automatic type, schema, and index syncing, node type injection, unique checking in mutations, and query helpers. The aim is to provide a library with ORM-like convenience found in SQL ecosystems for Dgraph clients.`
+  },
+  {
+    id: 4,
+    title: 'Golang Error Handling',
+    created: '2020-08-17T13:59:57.196Z',
+    text: `> 'Don't just check errors, handle them gracefully', - Go Proverb
+
+**TLDR**: wrap unexpected errors with "github.com/pkg/errors".Wrap, or fmt.Errorf("%w", err) (Go 1.13+) adding context.
+
+In my opinion, a developer writing Golang code will encounter ***3 phases*** in their journey in error handling, as per my personal experience and in the teams I've been in:
+
+1. Blindly returning all errors, losing track of where it came from.
+2. Logging all errors, causing duplicate error logs.
+3. Wrapping errors with a context.
+
+## Introduction
+Like many things in the Go language, error handling is one of the many programming language features that have been simplified and stripped down by the Go language, where an error is just a simple value that is passed around. An advantage is that the flow of the program is relatively more linear and simple, whereas *Exception*-based error handling highly used in many other languages may cause the flow of the program to jump around unexpectedly. But the drawback to this is that, in larger and more complex projects, errors become harder to track, if no accepted or standard convention or system of error handling exists in the project.`
   }
 ];
 
